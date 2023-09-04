@@ -5,7 +5,13 @@ require("dotenv").config()
 
 const express = require('express');
 
+var bodyParser = require('body-parser')
+
 const cors = require("cors")
+
+
+const sendEmail = require('./email');
+
 
 
 
@@ -23,18 +29,28 @@ app.use(express.static(path.join(__dirname,'public')))
 
 //body-parser middleware
 
-app.use(express.json())
-app.use(express.urlencoded({extended:false}))
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+
 
 //cors middleware
 app.use(cors({
     origin:"*",
     credentials:true,
 }))
+
 //home
-app.get('/test',(req,res)=>{
-    // res.header("Access-Control-Allow-Origin", "*");
+app.get('/',(req,res)=>{
     res.json({message:"welcome to my portfolio"})
+})
+
+
+
+app.post('/email',(req,res)=>{
+    // res.header("Access-Control-Allow-Origin", "*");
+    console.log(req.body)
+    res.json({email:"email sent successfully"})
+    // sendEmail({from:"nasr.hanslo@younglings.africa",to:["nasr.hanslo@younglings.africa"],subject:"test",text:"hello world"})
 })
 
 

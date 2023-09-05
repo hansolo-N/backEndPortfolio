@@ -49,7 +49,7 @@ app.get('/',(req,res)=>{
 app.post('/email',(req,res)=>{
     // res.header("Access-Control-Allow-Origin", "*");
     console.log(req.body)
-    sendEmail({from:"nasr.hanslo@younglings.africa",to:["nasr.hanslo@younglings.africa"],subject:"test",text:"test"},function(error,info){
+    sendEmail({from:"jonas.slark@icloud.com",to:["nasr.hanslo@younglings.africa"],subject:"test",text:"test"},function(error,info){
         console.log("error : " + JSON.stringify(error));
         console.log("info : " + JSON.stringify(info))
     })

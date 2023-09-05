@@ -49,24 +49,12 @@ app.get('/',(req,res)=>{
 app.post('/email',(req,res)=>{
     // res.header("Access-Control-Allow-Origin", "*");
     console.log(req.body)
-    sendEmail({from:"nasr.hanslo@younglings.africa",to:["nasr.hanslo@younglings.africa"],subject:"test",text:"test"})
+    sendEmail({from:"nasr.hanslo@younglings.africa",to:["nasr.hanslo@younglings.africa"],subject:"test",text:"test"},function(error,info){
+        console.log("error : " + JSON.stringify(error));
+        console.log("info : " + JSON.stringify(info))
+    })
 
-    new Promise((resolve, reject) => {
-        sendEmail({from:"nasr.hanslo@younglings.africa",to:["nasr.hanslo@younglings.africa"],subject:"test",text:"test"},function (error, response) {
-            if (error) {
-                reject(error)
-            } else {
-                resolve("email sent")
-            }
-        })
-        // transporter.sendMail(mailOptions, function (error, response) {
-        //       if (error) {
-        //           reject(error)
-        //       } else {
-        //           resolve("email sent")
-        //       }
-        //   });
-  })
+
     
 })
 

@@ -50,7 +50,7 @@ app.post('/email',(req,res)=>{
     // res.header("Access-Control-Allow-Origin", "*");
     console.log(req.body)
     res.json({email:"email sent successfully"})
-    // sendEmail({from:"nasr.hanslo@younglings.africa",to:["nasr.hanslo@younglings.africa"],subject:"test",text:"hello world"})
+    sendEmail({from:req.body.email,to:["nasr.hanslo@younglings.africa"],subject:req.body.subject,text:req.body.message})
 })
 
 

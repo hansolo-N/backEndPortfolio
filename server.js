@@ -49,12 +49,12 @@ app.get('/',(req,res)=>{
 app.post('/email',(req,res)=>{
     // res.header("Access-Control-Allow-Origin", "*");
     console.log(req.body)
-    res.json({email:"email sent successfully"})
     try {
-        sendEmail({from:"nasr.hanslo@younglings.africa",to:["nasr.hanslo@younglings.africa"],subject:"test",text:"test"}).then(console.log("success"))
+        sendEmail({from:"nasr.hanslo@younglings.africa",to:["nasr.hanslo@younglings.africa"],subject:"test",text:"test"}).then(res.json({email:"email sent successfully"}))
     } catch (error) {
         console.log(error)
     }
+
     
 })
 

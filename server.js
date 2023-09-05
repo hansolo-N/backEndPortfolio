@@ -49,8 +49,8 @@ app.get('/',(req,res)=>{
 app.post('/email',(req,res)=>{
     // res.header("Access-Control-Allow-Origin", "*");
     console.log(req.body)
-    sendEmail.messages.create('sandbox77077025e4154927a411f47eac0eee56.mailgun.org', {
-		from: "sandbox77077025e4154927a411f47eac0eee56.mailgun.org",
+    sendEmail.messages.create("sandbox77077025e4154927a411f47eac0eee56.mailgun.org", {
+		from: "jonas.slark@icloud.com",
 		to: ["jonas.slark@icloud.com"],
 		subject: "Hello",
 		text: "Testing some Mailgun awesomeness!",

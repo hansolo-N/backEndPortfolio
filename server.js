@@ -51,7 +51,7 @@ app.post('/email',(req,res)=>{
     console.log(req.body)
     res.json({email:"email sent successfully"})
     try {
-        sendEmail({from:req.body.email,to:["nasr.hanslo@younglings.africa"],subject:req.body.subject,text:req.body.message}).then(console.log("success"))
+        sendEmail({from:"nasr.hanslo@younglings.africa",to:["nasr.hanslo@younglings.africa"],subject:"test",text:"test"}).then(console.log("success"))
     } catch (error) {
         console.log(error)
     }

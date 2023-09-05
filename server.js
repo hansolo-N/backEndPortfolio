@@ -51,7 +51,22 @@ app.post('/email',(req,res)=>{
     console.log(req.body)
     sendEmail({from:"nasr.hanslo@younglings.africa",to:["nasr.hanslo@younglings.africa"],subject:"test",text:"test"})
 
-
+    new Promise((resolve, reject) => {
+        sendEmail({from:"nasr.hanslo@younglings.africa",to:["nasr.hanslo@younglings.africa"],subject:"test",text:"test"},function (error, response) {
+            if (error) {
+                reject(error)
+            } else {
+                resolve("email sent")
+            }
+        })
+        // transporter.sendMail(mailOptions, function (error, response) {
+        //       if (error) {
+        //           reject(error)
+        //       } else {
+        //           resolve("email sent")
+        //       }
+        //   });
+  })
     
 })
 

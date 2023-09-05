@@ -49,15 +49,16 @@ app.get('/',(req,res)=>{
 app.post('/email',(req,res)=>{
     // res.header("Access-Control-Allow-Origin", "*");
     console.log(req.body)
-    sendEmail.messages
-	.create(sandbox77077025e4154927a411f47eac0eee56.mailgun.org, {
-		from: "Mailgun Sandbox <postmaster@sandbox77077025e4154927a411f47eac0eee56.mailgun.org>",
+    sendEmail.messages.create('sandbox77077025e4154927a411f47eac0eee56.mailgun.org', {
+		from: "sandbox77077025e4154927a411f47eac0eee56.mailgun.org",
 		to: ["jonas.slark@icloud.com"],
 		subject: "Hello",
-		text: "Testing some Mailgun awesomness!",
+		text: "Testing some Mailgun awesomeness!",
+		html: "<h1>Testing some Mailgun awesomeness!</h1>"
 	})
 	.then(msg => console.log(msg)) // logs response data
-	.catch(err => console.log(err));
+	.catch(err => console.log(err)); // logs any error
+	
 
 
     

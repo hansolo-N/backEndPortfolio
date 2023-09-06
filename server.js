@@ -48,6 +48,7 @@ app.get('/',(req,res)=>{
 
 app.post('/email',async (req,res)=>{
     // res.header("Access-Control-Allow-Origin", "*");
+	console.log(req.body)
     try {
 		await sendEmail.messages.create("sandbox77077025e4154927a411f47eac0eee56.mailgun.org", {
 			from: req.body.email,

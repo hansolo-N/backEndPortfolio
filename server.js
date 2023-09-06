@@ -51,10 +51,10 @@ app.post('/email',async (req,res)=>{
 	console.log(req.body.email)
     try {
 		await sendEmail.messages.create("sandbox77077025e4154927a411f47eac0eee56.mailgun.org", {
-			from: req.body.email,
+			from: req.body.mailObj.email,
 			to: ["nasr.hanslo@younglings.africa"],
-			subject: req.body.subject,
-			text: req.body.message,
+			subject: req.body.mailObj.subject,
+			text: req.body.mailObj.message,
 			html: "<h1>Email inquiries from Portfolio</h1>"
 		})
 		.then(msg => console.log(msg)) // logs response data

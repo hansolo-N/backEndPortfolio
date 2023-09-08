@@ -1,7 +1,6 @@
 "use strict"; 
 require("dotenv").config(); 
 
-console.log(process)
 
 const nodemailer=require("nodemailer"); 
 /** 

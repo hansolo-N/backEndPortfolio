@@ -14,7 +14,6 @@ const sendEmail = require('./email');
 
 
 
-
 const port = process.env.PORT
 
 
@@ -49,15 +48,17 @@ app.get('/',(req,res)=>{
 app.post('/email',async (req,res)=>{
     // res.header("Access-Control-Allow-Origin", "*");
 	console.log(req.body.email)
+
     try {
-		await sendEmail.messages.create("sandbox77077025e4154927a411f47eac0eee56.mailgun.org", {
-			from: req.body.mailObj.email,
-			to: ["nasr.hanslo@younglings.africa"],
-			subject: req.body.mailObj.subject,
-			text: req.body.mailObj.message,
-			html: "<h1>Email inquiries from Portfolio</h1>"
-		})
-		.then(msg => console.log(msg)) // logs response data
+		const mailObj ={
+			from: req.body.from,
+			to : ['nasrhanslo@younglings.africa'],
+			subject: req.body.subject,
+			text: req.body.message
+	
+			
+		}
+		sendEmail(mailObj).then(msg => console.log(msg)) // logs response data
 		.catch(err => console.log(err)); // logs any error
 	} catch (error) {
 		console.log(error)

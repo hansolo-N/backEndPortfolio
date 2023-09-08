@@ -1,8 +1,43 @@
-require("dotenv").config()
+"use strict"; 
+require("dotenv").config(); 
 
+console.log(process)
 
-const formData = require('form-data');
-const Mailgun = require('mailgun.js');
-const mailgun = new Mailgun(formData);
-const mg = mailgun.client({username: "api", key: process.env.PRIVATE_KEY});
-module.exports = mg
+const nodemailer=require("nodemailer"); 
+/** 
+ * sendEmail 
+ * @param{Object}mailObj - Email information 
+ * @param{String}from- Email address of the sender 
+ * @param{Array}to- Array of recipients email address 
+ * @param{String}subject - Subject of the email 
+ * @param{String}text - Email body 
+ */ 
+const sendEmail=async (mailObj) => { 
+const{from,to,subject,text}=mailObj; 
+try{ 
+// Create a transporter 
+let transporter=nodemailer.createTransport({ 
+host:"smtp-relay.brevo.com", 
+port:587, 
+auth:{ 
+user:process.env.USER, 
+pass:process.env.PASS, 
+}, 
+}); 
+// send mail with defined transport object 
+let info=await transporter.sendMail({ 
+from:from,// sender address 
+to:to,// list of receivers 
+subject:subject,// subject line 
+text:text,// plain text body 
+}); 
+console.log(`Message sent:${info.messageId}`); 
+return`Message sent:${info.messageId}`; 
+}catch(error){ 
+console.error(error); 
+throw new Error( 
+`Something went wrong in the sendmailmethod.Error:${error.message}` 
+); 
+} 
+}; 
+module.exports=sendEmail; 

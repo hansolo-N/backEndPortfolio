@@ -48,10 +48,9 @@ app.post('/email',async (req,res)=>{
     try {
 		const msg = {
 			to:"nasr.hanslo@younglings.africa",
-			from:req.body.email,
-			subject:req.body.subject,
-			text:req.body.message,
-			// html:<span>hello world</span>
+			from:"nasr.hanslo@younglings.africa",
+			subject:"test",
+			text:"test"
 		}
 		sendEmail.send(msg).then(()=>{
 			console.log("email sent")

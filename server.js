@@ -42,7 +42,7 @@ app.get('/',(req,res)=>{
 
 app.post('/email',async (req,res)=>{
     // res.header("Access-Control-Allow-Origin", "*");
-	console.log(req.body.email)
+	console.log(req.body.mailObj)
 
     try {
 		const msg = {

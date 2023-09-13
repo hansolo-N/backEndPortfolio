@@ -41,18 +41,17 @@ app.get('/',(req,res)=>{
 
 
 app.post('/email',async (req,res)=>{
-    // res.header("Access-Control-Allow-Origin", "*");
-	console.log(req.body.mailObj)
+    const msg = {
+		to:"nasr.hanslo@icloud.com",
+		from:"nasr.hanslo@icloud.com",
+		subject:req.body.mailObj.subject,
+		text:req.body.mailObj.message,
+		html:`<span>this email is from me</span>`
+	}
 
     try {
-		const msg = {
-			to:"nasr.hanslo@icloud.com",
-			from:"nasr.hanslo@icloud.com",
-			subject:req.body.mailObj.subject,
-			text:req.body.mailObj.message,
-			html:`<span>this email is from me</span>`
-		}
-		sendEmail.send(msg).then(()=>{
+		
+		await sendEmail.send(msg).then(()=>{
 			console.log("email sent")
 			})
 			res.send("successful")

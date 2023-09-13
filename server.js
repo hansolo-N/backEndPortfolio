@@ -51,7 +51,7 @@ app.post('/email',async (req,res)=>{
 			from:req.body.email,
 			subject:req.body.subject,
 			text:req.body.message,
-			html:<span>hello world</span>
+			// html:<span>hello world</span>
 		}
 		sendEmail.send(msg).then(()=>{
 			console.log("email sent")

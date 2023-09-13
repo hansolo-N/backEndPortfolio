@@ -47,7 +47,7 @@ app.post('/email',async (req,res)=>{
     try {
 		const msg = {
 			to:"nasr.hanslo@icloud.com",
-			from:req.body.mailObj.email,
+			from:"nasr.hanslo@icloud.com",
 			subject:req.body.mailObj.subject,
 			text:req.body.mailObj.message,
 			html:`<span>this email is from me</span>`

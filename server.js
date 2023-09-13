@@ -11,7 +11,6 @@ const cors = require("cors")
 
 
 const sendEmail = require('./email');
-const { error } = require('console');
 
 const port = process.env.PORT
 
@@ -48,9 +47,9 @@ app.post('/email',async (req,res)=>{
     try {
 		const msg = {
 			to:"nasr.hanslo@younglings.africa",
-			from:"nasr.hanslo@younglings.africa",
-			subject:"test",
-			text:"test"
+			from:req.body.mailObj.email,
+			subject:req.body.mailObj.subject,
+			text:req.body.mailObj.message
 		}
 		sendEmail.send(msg).then(()=>{
 			console.log("email sent")

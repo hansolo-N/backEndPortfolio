@@ -55,6 +55,7 @@ app.post('/email',async (req,res)=>{
 		sendEmail.send(msg).then(()=>{
 			console.log("email sent")
 			})
+			res.send("successful")
 		}
 		catch (error) {
 		console.log(error)

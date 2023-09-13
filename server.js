@@ -11,13 +11,9 @@ const cors = require("cors")
 
 
 const sendEmail = require('./email');
-
-
+const { error } = require('console');
 
 const port = process.env.PORT
-
-
-
 
 const app = express();
 
@@ -50,17 +46,18 @@ app.post('/email',async (req,res)=>{
 	console.log(req.body.email)
 
     try {
-		const mailObj ={
-			from: req.body.from,
-			to : ['nasrhanslo@younglings.africa'],
-			subject: req.body.subject,
-			text: req.body.message
-	
-			
+		const msg = {
+			to:"nasr.hanslo@younglings.africa",
+			from:req.body.email,
+			subject:req.body.subject,
+			text:req.body.message,
+			html:<span>hello world</span>
 		}
-		sendEmail(mailObj).then(msg => console.log(msg)) // logs response data
-		.catch(err => console.log(err)); // logs any error
-	} catch (error) {
+		sendEmail.send(msg).then(()=>{
+			console.log("email sent")
+			})
+		}
+		catch (error) {
 		console.log(error)
 	}
 
